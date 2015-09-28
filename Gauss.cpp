@@ -1,7 +1,17 @@
 #include<iostream>
 using namespace std;
 int a[100][101],temp,i,i2,j,k,n;
-void swap(int x,int y)
+
+void printa()
+{
+	for (int i = 0; i <n; ++i)
+	{
+		for(int j=0;j<=n;j++)cout<<a[i][j]<<" ";
+			cout<<endl;
+	}
+}
+
+void swapxy(int x,int y)
 {
 	int k,temp;
 	for (k = 0; k <= n; ++k)
@@ -20,22 +30,14 @@ int gcd(int m,int n)
 void del(int l1,int l2)
 {
 	int g=gcd(a[l1][l1],a[l2][l1]);
+    int p1=a[l2][l1]/g;
+    int p2=a[l1][l1]/g;
 	for (int i = l1; i <= n; ++i)
-	{
-		a[l1][i]*=(a[l2][l1]/g);
-		a[l2][i]*=(a[l1][l1]/g);//get lcm
+	{  	a[l1][i]*=p1;
+		a[l2][i]*=p2;//get lcm
 		a[l2][i]-=a[l1][i];//delete
 	}
-
-}
-
-void print()
-{
-	for (int i = 0; i <n; ++i)
-	{
-		for(int j=0;j<=n;j++)cout<<a[i][j]<<" ";
-			cout<<endl;
-	}
+    printa();
 }
 
 int main()
@@ -51,13 +53,13 @@ int main()
 	}	//init
 	for (i = 0; i < n; ++i)
 	{
-		if (a[i][i]=0)
+		if (a[i][i]==0)
 		{
 			for (i2 = i+1; i2 < n; ++i2)
 			{
-				if(a[i2][i]!=0)
+				if(a[i2][i]==0)
 				{
-					swap(i,i2);
+					swapxy(i,i2);
 					i2=n+1;
 				}
 			}
@@ -66,7 +68,7 @@ int main()
 		{
 			del(i,i2);//将第i行化为0
 		}
-		print;
 	}
+	printa();
 	return 0;
 }
