@@ -4,6 +4,7 @@ int a[100][101],temp,i,i2,j,k,n;
 
 void printa()
 {
+    cout<<endl;
 	for (int i = 0; i <n; ++i)
 	{
 		for(int j=0;j<=n;j++)cout<<a[i][j]<<" ";
@@ -64,10 +65,10 @@ int main()
 					i2=n+1;
 				}
 			}
-		}else
+		};
 		for (i2 = i+1; i2 < n; ++i2)
 		{
-			del(i,i2);//将第i行化为0
+			del(i,i2);//将第i行化为0,消成上三角
 		}
 	}
 	printa();
