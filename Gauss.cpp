@@ -29,6 +29,7 @@ int gcd(int m,int n)
 
 void del(int l1,int l2)
 {
+	if(!a[l2][l1]) return;
 	int g=gcd(a[l1][l1],a[l2][l1]);
     int p1=a[l2][l1]/g;
     int p2=a[l1][l1]/g;
@@ -37,7 +38,7 @@ void del(int l1,int l2)
 		a[l2][i]*=p2;//get lcm
 		a[l2][i]-=a[l1][i];//delete
 	}
-    printa();
+//    printa();
 }
 
 int main()
@@ -57,7 +58,7 @@ int main()
 		{
 			for (i2 = i+1; i2 < n; ++i2)
 			{
-				if(a[i2][i]==0)
+				if(a[i2][i]!=0)
 				{
 					swapxy(i,i2);
 					i2=n+1;
